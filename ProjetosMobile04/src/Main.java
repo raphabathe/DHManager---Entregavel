@@ -9,7 +9,6 @@ public class Main {
         DigitalHouseManager manager = new DigitalHouseManager();
 
 
-
         ProfessorAdjunto professorAdjunto1 = new ProfessorAdjunto("Guilherme", "Sartori", 002, 0);
         ProfessorAdjunto professorAdjunto2 = new ProfessorAdjunto("Joaozio", "Maluco", 003, 0);
         ProfessorTitular professorTitular1 = new ProfessorTitular("Fabio", "Tadashi", 001, "Android / Java");

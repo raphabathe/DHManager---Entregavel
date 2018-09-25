@@ -14,7 +14,7 @@ public class Aluno {
 
 
     public void pesquisarCurso(){
-        System.out.println(getNome() +" está matriculado nos seguintes cursos:");
+        System.out.println("O Aluno "+getNome() +" está matriculado nos seguintes cursos:");
         for (Curso curso: cursosMatriculados) {
             System.out.println(curso.getNome());
 
