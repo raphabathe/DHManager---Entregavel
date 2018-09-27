@@ -22,6 +22,8 @@ public class Curso {
     public Curso() {
     }
 
+    // Entendo que o enunciado estava um pouco confuso, mas faltou adicionar os alunos ao curso na hora de matricular
+    // teoricamente tem um bug no seu sistema pois poderao ter mais alunos matriculados do que o curso suporta
     public Boolean adicionarUmAluno (Aluno umAluno){
         if (listaDeAlunos.size()<maxAlunos){
             listaDeAlunos.add(umAluno);

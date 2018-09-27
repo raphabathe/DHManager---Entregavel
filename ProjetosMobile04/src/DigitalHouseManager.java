@@ -10,13 +10,9 @@ public class DigitalHouseManager {
     private List<Matricula> listaMatriculas = new ArrayList<>();
 
 
-
-
-
     public void registrarCurso(String nome, Integer codigoCurso, Integer quantidadeMaximaDeAlunos){
         Curso curso = new Curso(nome, codigoCurso,quantidadeMaximaDeAlunos);
         listaCursos.add(curso);
-
     }
 
 
@@ -30,7 +26,7 @@ public class DigitalHouseManager {
         listaCursos.remove(cursoARemover);
     }
 
-
+    // Os professores nunca foram registrados ne?
     public void registrarProfessorAdjunto(String nome, String sobrenome, Integer codigoDoProfessor, Integer horasMonitoria){
         ProfessorAdjunto professorAdjunto = new ProfessorAdjunto(nome, sobrenome, codigoDoProfessor, horasMonitoria);
         listaProfessores.add(professorAdjunto);
@@ -51,6 +47,8 @@ public class DigitalHouseManager {
             if (professor.getCodigoProfessor().equals(codigoProfessor)){
                 professorAExcluir = professor;
             }
+            // este remove tem que estar fora do for. Se ficar aqui vai dar ConcurrentModificationException
+            // (msm ideia do remover curso)
             listaProfessores.remove(professorAExcluir);
         }
     }
@@ -66,6 +64,8 @@ public class DigitalHouseManager {
         Aluno alunoPesquisar = buscarAlunoPorCodigo(codigoAluno);
 
         if (cursoPesquisar.getListaDeAlunos().size() < cursoPesquisar.getMaxAlunos()){
+            // Aqui não precisaria dividir a declaracao da variavel e a atribuicao, poderia ser:
+            // Matricula matriculaAluno = new Matricula(alunoPesquisar, cursoPesuisar);
             Matricula matriculaAluno;
             matriculaAluno = new Matricula(alunoPesquisar , cursoPesquisar);
             listaMatriculas.add(matriculaAluno);
@@ -121,6 +121,8 @@ public class DigitalHouseManager {
                 professorAdjuntoParaAdicionar = (ProfessorAdjunto) professorAdjunto;
             }
         }
+        // Estas linhas pode gerar um NullPointerException caso o codigo do curso consultado nao exista
+        // poderia tratar com um try and catch ou um if(cursoPesquisa != null)
         cursoPesquisa.setProfessorAdjunto(professorAdjuntoParaAdicionar);
         cursoPesquisa.setProfessorTitular(professorParaAdicionar);
     }

@@ -1,4 +1,4 @@
-public abstract class Professor {
+public abstract class Professor { // <--- boa!! Classe abstrata
 
     private String nome;
     private String sobrenome;
